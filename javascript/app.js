@@ -127,8 +127,8 @@ Animate your pet across the screen while it's alive.
 // create Pet class
 // what are the parameters for our constructor?????
 class Pet {
-	constructor(name, hunger, sleepiness, boredom, bloodLust, maxBloodLust, age) {
-		this.name = name;
+	constructor(hunger, sleepiness, boredom, bloodLust, maxBloodLust, age) {
+		this.name = $('input').val();
 		this.hunger = hunger; 
 		this.sleepiness = sleepiness;
 		this.boredom = boredom;
@@ -144,14 +144,31 @@ class Pet {
 }
 // create the different phases
 // change name to allow for user input
-const egg = new Pet("bb egg", 5, 5, 5, 0, 50, 0);
-const phase2 = new Pet("little guy", 5, 5, 5, 10, 40, 2);
-const phase3 = new Pet("growin up", 4, 4, 4, 15, 40, 4);
-const phase4 = new Pet("monster man", 2, 2, 2, 20, 30, 6);
+const egg = new Pet(5, 5, 5, 0, 50, 0);
+const phase2 = new Pet(5, 5, 5, 10, 40, 2);
+const phase3 = new Pet(4, 4, 4, 15, 40, 4);
+const phase4 = new Pet(2, 2, 2, 20, 30, 6);
 
 // The idea here is that as the pet grows, his blood lust becomes harder to satisfy (lower max threshold), though the pet becomes less needy with food, sleep, boredom.
 
 // Now we need a game object with granular, broken up methods
+
+const game = {
+	start() {
+
+	},
+	createEgg() {
+		const egg = new Pet(5, 5, 5, 0, 50, 0);	},
+	createPhase2() {
+		const phase2 = new Pet(5, 5, 5, 10, 40, 2);
+	},
+	createPhase3() {
+		const phase3 = new Pet(4, 4, 4, 15, 40, 4);
+	},
+	createPhase4() {
+		const phase4 = new Pet(2, 2, 2, 20, 30, 6);
+	}
+}
 
 
 
