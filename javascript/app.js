@@ -128,7 +128,7 @@ Animate your pet across the screen while it's alive.
 // what are the parameters for our constructor?????
 class Pet {
 	constructor(hunger, sleepiness, boredom, bloodLust, maxBloodLust, age) {
-		this.name = $('input').val();
+		// this.name = $('input').val();
 		this.hunger = hunger; 
 		this.sleepiness = sleepiness;
 		this.boredom = boredom;
@@ -138,41 +138,67 @@ class Pet {
 	}
 	isDead() {
 		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > maxBloodLust) {
-				return true
-			}
-		} 
+				return true;
+		}
+	} 
 }
 // create the different phases
 // change name to allow for user input
-const egg = new Pet(5, 5, 5, 0, 50, 0);
-const phase2 = new Pet(5, 5, 5, 10, 40, 2);
-const phase3 = new Pet(4, 4, 4, 15, 40, 4);
-const phase4 = new Pet(2, 2, 2, 20, 30, 6);
-
-// The idea here is that as the pet grows, his blood lust becomes harder to satisfy (lower max threshold), though the pet becomes less needy with food, sleep, boredom.
-
-// Now we need a game object with granular, broken up methods
+const monster = new Pet(5, 5, 5, 10, 20, 0);
 
 const game = {
 	start() {
 
 	},
-	createEgg() {
-		const egg = new Pet(5, 5, 5, 0, 50, 0);	},
-	createPhase2() {
-		const phase2 = new Pet(5, 5, 5, 10, 40, 2);
+	timer() {
+		let timer = 0;
+		// setInterval
+		window.setInterval(() => {
+			timer++; 
+
+			if(timer > 0 && timer % 30 === 0) {
+				monster.age += 1;
+				console.log(monster.age);
+			} else if (timer > 0 && timer % 5 === 0) {
+				monster.hunger += 1;
+
+				monster.sleepiness += 1;
+
+				monster.boredom += 1;
+
+				monster.bloodLust += 1;
+
+				console.log(monster.bloodLust);
+			} 
+		}, 1000);
+		
+
+
+			// increase age 
+			// increase hunger, boredom, sleepiness
+			// if he's dead 
+				// game over 
+
 	},
-	createPhase3() {
-		const phase3 = new Pet(4, 4, 4, 15, 40, 4);
+	feedPet() {
+		monster.hunger = monster.hunger - 5;
+		monster.bloodLust -= 5;
 	},
-	createPhase4() {
-		const phase4 = new Pet(2, 2, 2, 20, 30, 6);
+	playWithPet() {
+		monster.boredom = monster.boredom - 5;
+		monster.bloodLust -= 5;
+	},
+	turnLightsOff() {
+		monster.sleepiness = monster.sleepiness - 5;
+	},
+	morph() {
+
 	}
 }
 
 
 
-
+game.timer();
 
 
 
