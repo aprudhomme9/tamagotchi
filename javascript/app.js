@@ -147,19 +147,20 @@ class Pet {
 const monster = new Pet(5, 5, 5, 10, 20, 0);
 
 const game = {
+	counter: 0,
+
 	start() {
 
 	},
 	timer() {
-		let timer = 0;
 		// setInterval
 		window.setInterval(() => {
-			timer++; 
+			this.counter ++;
 
-			if(timer > 0 && timer % 30 === 0) {
+			if(this.counter > 0 && this.counter % 30 === 0) {
 				monster.age += 1;
 				console.log(monster.age);
-			} else if (timer > 0 && timer % 5 === 0) {
+			} else if (this.counter > 0 && this.counter % 5 === 0) {
 				monster.hunger += 1;
 
 				monster.sleepiness += 1;
