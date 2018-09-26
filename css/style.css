@@ -10,7 +10,7 @@ body {
 #input {
 	font-family: monospace;
 	text-align: left;
-	font-size: 12pt;
+	font-size: 10pt;
 	color: white;
 }
 
@@ -21,6 +21,14 @@ body {
 	color: goldenrod;
 	margin-top: 30px;
 }
+
+/*.leftSide {
+	width: 50%;
+}
+
+.rightSide {
+	width: 50%;
+}*/
 
 input {
 	height: 20px;

@@ -62,7 +62,7 @@ Boredom (1-10 scale)
 	As boredom increases, thirst for blood also increases. this is bad, because user dies
 
 Age
-	Increases with interval. Add one every 30 seconds. At age 2, your pet morphs.
+	Increases with interval. Add one every 30 seconds. At age 2, your pet morphs. Age 4, morphs again. 
 
 Add buttons to the screen to feed your pet, turn off the lights, and play with your pet.
 
@@ -108,13 +108,11 @@ Animate your pet across the screen while it's alive.
 // create Pet class
 // what are the parameters for our constructor?????
 class Pet {
-	constructor(hunger, sleepiness, boredom, bloodLust, maxBloodLust, age) {
-		this.name = $('input').val();
+	constructor(hunger, sleepiness, boredom, bloodLust, age) {
 		this.hunger = hunger; 
 		this.sleepiness = sleepiness;
 		this.boredom = boredom;
 		this.bloodLust = bloodLust;
-		this.maxBloodLust = maxBloodLust;	
 		this.age = age;
 	}
 	levelUp() {
@@ -127,18 +125,24 @@ class Pet {
 			return true;
 		}
 	}
+	becomeAdult() {
+		if(this.age >= 6) {
+			return true
+		}
+	}
 	isDead() {
-		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 50) {
+		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust >= 20) {
 				return true;
 		}
 	}
 	nameMonster() {
-		$('#name').text(this.name);	
+		$('#name').text($('input').val());
+		game.start();	
 	} 
 }
 // create the different phases
 // change name to allow for user input
-const monster = new Pet(0, 0, 0, 10, 20, 0);
+const monster = new Pet(0, 0, 0, 10, 0);
 /*******************************************
 Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
 ********************************************/
@@ -154,7 +158,7 @@ const game = {
 
 	},
 	updateValues() {
-		$('#name').text($('input').val());
+		// $('#name').text($('input').val());
 		$('#age').text('Age: ' + monster.age);
 		$('#hunger').text('Hunger: ' + monster.hunger);
 		$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
@@ -173,6 +177,10 @@ const game = {
 
 			if(monster.evolve()) {
 				this.secondMorph();
+			}
+
+			if(monster.becomeAdult()) {
+				this.thirdMorph();
 			}
 
 			if(monster.isDead()) {
@@ -218,6 +226,9 @@ const game = {
 	firstMorph() {
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
 	},
+	thirdMorph() {
+		$('#dedede').attr('src', 'http://rs477.pbsrc.com/albums/rr134/Kaabiichan/Kirby%20Series/dededeawesomeface.gif~c200');
+	},
 	secondMorph() {
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Tumble_zps558cf398.gif~c200');
 	},
@@ -236,12 +247,11 @@ Click on play, play with pet
 Click on lights, turn em off
 
 ***********************************/
-// $('#submit').on('click', game.start);
+$('#submit').on('click', monster.nameMonster);
 $('#food').on('click', game.feedPet);
 $('#lights').on('click', game.turnLightsOff);
 $('#play').on('click', game.playWithPet);
 
-game.start();
 
 
 
