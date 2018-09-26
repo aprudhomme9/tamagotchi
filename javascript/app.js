@@ -147,19 +147,6 @@ class Pet {
 const monster = new Pet(5, 5, 5, 10, 20, 0);
 /*******************************************
 Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
-
-
-
-
-
-
-
-
-
-
-
-
-
 ********************************************/
 const game = {
 	counter: 0,
@@ -180,10 +167,11 @@ const game = {
 			this.gameOver();
 			};
 
-			if(this.counter > 0 && this.counter % 30 === 0) {
+			if(this.counter > 0 && this.counter % 10 === 0) {
 				monster.age += 1;
-				console.log(monster.age);
-			} else if (this.counter > 0 && this.counter % 3 === 0) {
+				$('#age').text('Age: ' + monster.age);
+				// console.log(monster.age);
+			} else if (this.counter > 0 && this.counter % 2 === 0) {
 				monster.hunger += 1;
 				$('#hunger').text('Hunger: ' + monster.hunger);
 

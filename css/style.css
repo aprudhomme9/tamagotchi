@@ -5,7 +5,12 @@ body {
 	align-items: baseline;
 	text-align: center;
 }
-
+.age {
+	font-family: monospace;
+	text-align: left;
+	font-size: 16pt;
+	color: white;
+}
 .properties {
 	font-family: monospace;
 	text-align: right;
@@ -13,6 +18,10 @@ body {
 	color: white;
 	display: flex;
 	flex-direction: column;
+}
+
+#bloodLust {
+	color: red;
 }
 
 h4 {
