@@ -136,6 +136,16 @@ class Pet {
 		this.maxBloodLust = maxBloodLust;	
 		this.age = age;
 	}
+	levelUp() {
+		if(this.age >= 2 && this.age < 4) {
+			return true;
+		}
+	}
+	evolve() {
+		if(this.age >= 4) {
+			return true;
+		}
+	}
 	isDead() {
 		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 50) {
 				return true;
@@ -144,7 +154,7 @@ class Pet {
 }
 // create the different phases
 // change name to allow for user input
-const monster = new Pet(5, 5, 5, 10, 20, 0);
+const monster = new Pet(0, 0, 0, 10, 20, 0);
 /*******************************************
 Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
 ********************************************/
@@ -172,6 +182,14 @@ const game = {
 			this.counter ++;
 			this.updateValues();
 
+			if(monster.levelUp()) {
+				this.firstMorph();
+			}
+
+			if(monster.evolve()) {
+				this.secondMorph();
+			}
+
 			if(monster.isDead()) {
 				this.gameOver();
 			};
@@ -189,7 +207,7 @@ const game = {
 				monster.bloodLust += 1;
 
 			};
-		}, 1000);
+		}, 100);
 	
 			// increase age 
 			// increase hunger, boredom, sleepiness
@@ -212,12 +230,16 @@ const game = {
 		monster.bloodLust -= 2;
 		// console.log('lights work');
 	},
-	morph() {
-
+	firstMorph() {
+		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
+	},
+	secondMorph() {
+		$('#dedede').attr('src', 'https://orig00.deviantart.net/9875/f/2010/356/1/a/king_dedede_bangs_his_hammer_by_rotommowtom-d35euwt.gif');
 	},
 	gameOver() {
 		clearInterval(this.intervalId);
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
+		$('.gameOver').text("GAME OVER, YOUR LIL' GUY IS DEAD");
 	}
 }
 /***********************************
@@ -227,25 +249,13 @@ Click on food, feedPet()
 Click on play, play with pet
 Click on lights, turn em off
 
-Put in interval
 ***********************************/
-
-
-game.start();
-
-
-
-
-
-
-
-
-
-
 
 $('#food').on('click', game.feedPet);
 $('#lights').on('click', game.turnLightsOff);
 $('#play').on('click', game.playWithPet);
+
+game.start();
 
 
 

@@ -23,6 +23,7 @@ input {
 	text-align: left;
 	font-size: 16pt;
 	color: white;
+	margin-top: 50px;
 }
 .properties {
 	font-family: monospace;
@@ -35,6 +36,14 @@ input {
 
 #bloodLust {
 	color: red;
+}
+
+.gameOver {
+	font-family: monospace;
+	text-align: center;
+	font-size: 16pt;
+	color: white;
+	opacity: 0.5;
 }
 
 h4 {
@@ -51,7 +60,6 @@ h4 {
 
 .buttons {
 	display: flex;
-	flex-grow: 3;
 	flex-direction: row;
 	align-content: center;
 	justify-content: center;
@@ -59,6 +67,7 @@ h4 {
 	font-family: monospace;
 }
 button {
+	margin: 5px;
 	align-content: center;
 	height: 40px;
 	width: 100px;
@@ -66,5 +75,5 @@ button {
 	background-color: white;
 	text-align: center;
 	justify-content: center;
-	align-content: space-between;
+	align-content: space-around;
 }
