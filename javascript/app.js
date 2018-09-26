@@ -131,8 +131,13 @@ class Pet {
 		}
 	}
 	isDead() {
-		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust >= 20) {
+		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10) {
 				return true;
+		}
+	}
+	killsUser() {
+		if(this.bloodLust >=15) {
+			return true;
 		}
 	}
 	nameMonster() {
@@ -142,7 +147,7 @@ class Pet {
 }
 // create the different phases
 // change name to allow for user input
-const monster = new Pet(0, 0, 0, 10, 0);
+const monster = new Pet(0, 0, 0, 0, 0);
 /*******************************************
 Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
 ********************************************/
@@ -185,7 +190,11 @@ const game = {
 
 			if(monster.isDead()) {
 				this.gameOver();
-			};
+			}
+
+			if(monster.killsUser()) {
+				this.userDies();
+			}
 
 			if(this.counter > 0 && this.counter % 10 === 0) {
 				monster.age += 1;
@@ -210,18 +219,18 @@ const game = {
 	},
 	feedPet() {
 		monster.hunger -= 5;
-		monster.bloodLust -= 2;
 		// console.log('food works');
 	},
 	playWithPet() {
 		monster.boredom -= 5;
-		monster.bloodLust -= 2;
 		// console.log('play works');
 	},
 	turnLightsOff() {
 		monster.sleepiness -= 5;
-		monster.bloodLust -= 2;
 		// console.log('lights work');
+	},
+	quenchThirst() {
+		monster.bloodLust -= 2;
 	},
 	firstMorph() {
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
@@ -236,6 +245,11 @@ const game = {
 		clearInterval(this.intervalId);
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
 		$('.gameOver').text("GAME OVER, YOUR LIL' GUY IS DEAD");
+	},
+	userDies() {
+		clearInterval(this.intervalId);
+		$('#dedede').attr('src', 'https://media.giphy.com/media/jlaVt4m9UdyVO/200.gif');
+		$('.gameOver').text("YOUR LIL' GUY HAD TO SATISFY HIS BLOOD LUST. USER DEAD.")
 	}
 }
 
@@ -251,6 +265,7 @@ $('#submit').on('click', monster.nameMonster);
 $('#food').on('click', game.feedPet);
 $('#lights').on('click', game.turnLightsOff);
 $('#play').on('click', game.playWithPet);
+$('#bloodThirst').on('click', game.quenchThirst);
 
 
 
