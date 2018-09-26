@@ -137,7 +137,7 @@ class Pet {
 		this.age = age;
 	}
 	isDead() {
-		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > maxBloodLust) {
+		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 20) {
 				return true;
 		}
 	} 
@@ -157,6 +157,10 @@ const game = {
 		window.setInterval(() => {
 			this.counter ++;
 
+			if(monster.isDead()) {
+			this.gameOver();
+			};
+
 			if(this.counter > 0 && this.counter % 30 === 0) {
 				monster.age += 1;
 				console.log(monster.age);
@@ -172,9 +176,7 @@ const game = {
 				console.log(monster.bloodLust);
 			} 
 		}, 1000);
-		
-
-
+	
 			// increase age 
 			// increase hunger, boredom, sleepiness
 			// if he's dead 
@@ -194,6 +196,10 @@ const game = {
 	},
 	morph() {
 
+	},
+	gameOver() {
+		window.clearInterval();
+		$('body').append('<h1>GAME OVER U SUCK</h1>')
 	}
 }
 

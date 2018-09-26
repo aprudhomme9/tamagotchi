@@ -1,3 +1,40 @@
 body {
 	background-color: lavender;
+	justify-content: center;
+	text-align: center;
+}
+
+h1, h2 {
+	font-family: monospace;
+	text-align: center;
+	color: navy;
+}
+
+h4 {
+	align-content: left;
+	text-align: left;
+}
+
+img {
+	position: center;
+	justify-content: center;
+}
+
+.buttons {
+	display: flex;
+	flex-grow: 3;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: center;
+}
+button {
+	align-content: center;
+	height: 40px;
+	width: 100px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	justify-content: center;
+	align-content: space-around;
 }
