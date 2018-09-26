@@ -14,6 +14,14 @@ body {
 	color: white;
 }
 
+#name {
+	font-family: monospace;
+	text-align: left;
+	font-size: 16pt;
+	color: goldenrod;
+	margin-top: 30px;
+}
+
 input {
 	height: 20px;
 	width: 120px;
@@ -23,7 +31,6 @@ input {
 	text-align: left;
 	font-size: 16pt;
 	color: white;
-	margin-top: 50px;
 }
 .properties {
 	font-family: monospace;

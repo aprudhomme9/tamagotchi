@@ -88,38 +88,19 @@ Add the ability to name your pet.
 Style the page.
 
 
-
-
-
-
-
-
-
-
 Increase your pet's age every x minutes
 	Increases by 1 every 30 seconds
 
-
-
 Increase your pet's Hunger, Sleepiness, and Bored metrics on an interval of your choosing.
-
-
-
 
 
 You pet should die if Hunger, Boredom, or Sleepiness hits 10.
 
 
-
-
-
 Morph your pet at certain ages.
 
 
-
 Animate your pet across the screen while it's alive.
-
-
 
 
 
@@ -128,7 +109,7 @@ Animate your pet across the screen while it's alive.
 // what are the parameters for our constructor?????
 class Pet {
 	constructor(hunger, sleepiness, boredom, bloodLust, maxBloodLust, age) {
-		// this.name = $('input').val();
+		this.name = $('input').val();
 		this.hunger = hunger; 
 		this.sleepiness = sleepiness;
 		this.boredom = boredom;
@@ -150,6 +131,9 @@ class Pet {
 		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 50) {
 				return true;
 		}
+	}
+	nameMonster() {
+		$('#name').text(this.name);	
 	} 
 }
 // create the different phases
@@ -170,6 +154,7 @@ const game = {
 
 	},
 	updateValues() {
+		$('#name').text($('input').val());
 		$('#age').text('Age: ' + monster.age);
 		$('#hunger').text('Hunger: ' + monster.hunger);
 		$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
@@ -207,7 +192,7 @@ const game = {
 				monster.bloodLust += 1;
 
 			};
-		}, 100);
+		}, 1000);
 	
 			// increase age 
 			// increase hunger, boredom, sleepiness
@@ -234,7 +219,7 @@ const game = {
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
 	},
 	secondMorph() {
-		$('#dedede').attr('src', 'https://orig00.deviantart.net/9875/f/2010/356/1/a/king_dedede_bangs_his_hammer_by_rotommowtom-d35euwt.gif');
+		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Tumble_zps558cf398.gif~c200');
 	},
 	gameOver() {
 		clearInterval(this.intervalId);
@@ -242,6 +227,7 @@ const game = {
 		$('.gameOver').text("GAME OVER, YOUR LIL' GUY IS DEAD");
 	}
 }
+
 /***********************************
 Event listeners
 
@@ -250,12 +236,13 @@ Click on play, play with pet
 Click on lights, turn em off
 
 ***********************************/
-
+// $('#submit').on('click', game.start);
 $('#food').on('click', game.feedPet);
 $('#lights').on('click', game.turnLightsOff);
 $('#play').on('click', game.playWithPet);
 
 game.start();
+
 
 
 
