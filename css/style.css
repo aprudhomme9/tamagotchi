@@ -1,40 +1,48 @@
 body {
-	background-color: lavender;
-	justify-content: center;
+	background-image: url("https://wallup.net/wp-content/uploads/2016/01/589-digital_art-Super_Mario-video_games.jpg");
+	background-position: bottom;
+	/*background-size: cover;*/
+	align-items: baseline;
 	text-align: center;
 }
 
-h1, h2 {
+.properties {
 	font-family: monospace;
-	text-align: center;
-	color: navy;
+	text-align: right;
+	font-size: 16pt;
+	color: white;
+	display: flex;
+	flex-direction: column;
 }
 
 h4 {
-	align-content: left;
-	text-align: left;
+	/*border: 1px solid white;*/
+	/*border-radius: 12px;*/
+	display: inline;
+	padding: 3px;
 }
 
-img {
+.sprite {
 	position: center;
-	justify-content: center;
+	align-items: baseline;
 }
 
 .buttons {
 	display: flex;
 	flex-grow: 3;
 	flex-direction: row;
-	flex-wrap: wrap;
 	align-content: center;
 	justify-content: center;
+	align-content: space-between;
+	font-family: monospace;
 }
 button {
 	align-content: center;
 	height: 40px;
 	width: 100px;
-	background-color: black;
-	color: white;
+	border-radius: 50px;
+	background-color: white;
 	text-align: center;
 	justify-content: center;
-	align-content: space-around;
+	align-content: space-between;
 }

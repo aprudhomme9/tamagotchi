@@ -145,7 +145,22 @@ class Pet {
 // create the different phases
 // change name to allow for user input
 const monster = new Pet(5, 5, 5, 10, 20, 0);
+/*******************************************
+Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
 
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************/
 const game = {
 	counter: 0,
 
@@ -173,7 +188,7 @@ const game = {
 
 				monster.bloodLust += 1;
 
-				console.log(monster.bloodLust);
+				// console.log(monster.bloodLust);
 			} 
 		}, 1000);
 	
@@ -199,10 +214,11 @@ const game = {
 	},
 	gameOver() {
 		window.clearInterval();
-		$('body').append('<h1>GAME OVER U SUCK</h1>')
 	}
 }
-
+/***********************************
+Event listeners
+***********************************/
 
 
 game.timer();
