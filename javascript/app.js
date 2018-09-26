@@ -152,37 +152,50 @@ const game = {
 	counter: 0,
 
 	start() {
+		/******
+		Need to have game start once user enters input for pet name
+		******/
 		this.timer();
 		$('#food').on('click', game.feedPet);
 		$('#lights').on('click', game.turnLightsOff);
 		$('#play').on('click', game.playWithPet);
 
 	},
+	updateValues() {
+		$('#age').text('Age: ' + monster.age);
+		$('#hunger').text('Hunger: ' + monster.hunger);
+		$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
+		$('#boredom').text('Boredom: ' + monster.boredom);
+		$('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
+	},
 	timer() {
 		// setInterval
 		window.setInterval(() => {
 			this.counter ++;
+			this.updateValues();
 
 			if(monster.isDead()) {
-			this.gameOver();
+				this.gameOver();
 			};
 
 			if(this.counter > 0 && this.counter % 10 === 0) {
 				monster.age += 1;
-				$('#age').text('Age: ' + monster.age);
+				// $('#age').text('Age: ' + monster.age);
+				// this.updateValues();
 				// console.log(monster.age);
 			} else if (this.counter > 0 && this.counter % 2 === 0) {
 				monster.hunger += 1;
-				$('#hunger').text('Hunger: ' + monster.hunger);
+				// this.updateValues();
+				// $('#hunger').text('Hunger: ' + monster.hunger);
 
 				monster.sleepiness += 1;
-				$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
+				// $('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
 
 				monster.boredom += 1;
-				$('#boredom').text('Boredom: ' + monster.boredom);
+				// $('#boredom').text('Boredom: ' + monster.boredom);
 
 				monster.bloodLust += 1;
-				$('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
+				// $('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
 				// console.log(monster.bloodLust);
 			} 
 		}, 1000);
@@ -195,22 +208,26 @@ const game = {
 	},
 	feedPet() {
 		monster.hunger -= 5;
-		monster.bloodLust -= 5;
+		monster.bloodLust -= 2;
+		// this.updateValues();
 		console.log('food works');
 	},
 	playWithPet() {
 		monster.boredom -= 5;
-		monster.bloodLust -= 5;
+		monster.bloodLust -= 2;
+		// this.updateValues();
 		console.log('play works');
 	},
 	turnLightsOff() {
 		monster.sleepiness -= 5;
+		// this.updateValues();
 		console.log('lights work');
 	},
 	morph() {
 
 	},
 	gameOver() {
+		console.log('game over')
 		window.clearInterval();
 	}
 }
@@ -221,6 +238,7 @@ Click on food, feedPet()
 Click on play, play with pet
 Click on lights, turn em off
 
+Put in interval
 ***********************************/
 
 

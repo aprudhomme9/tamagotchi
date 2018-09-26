@@ -4,6 +4,19 @@ body {
 	/*background-size: cover;*/
 	align-items: baseline;
 	text-align: center;
+	height: 100%;
+}
+
+#input {
+	font-family: monospace;
+	text-align: left;
+	font-size: 12pt;
+	color: white;
+}
+
+input {
+	height: 20px;
+	width: 120px;
 }
 .age {
 	font-family: monospace;
