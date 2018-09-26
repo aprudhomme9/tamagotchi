@@ -218,33 +218,41 @@ const game = {
 
 	},
 	feedPet() {
-		monster.hunger -= 5;
+		monster.hunger -= 3;
+		$('#dedede').velocity('callout.pulse', 2000);
 		// console.log('food works');
 	},
 	playWithPet() {
-		monster.boredom -= 5;
+		monster.boredom -= 3;
+		$('#dedede').velocity('callout.tada');
 		// console.log('play works');
 	},
 	turnLightsOff() {
-		monster.sleepiness -= 5;
+		monster.sleepiness -= 3;
+		$('#dedede').velocity('callout.pulse', 3000);
 		// console.log('lights work');
 	},
 	quenchThirst() {
 		monster.bloodLust -= 2;
+		$('#dedede').velocity('callout.bounce');
 	},
 	firstMorph() {
+		// $('#dedede').velocity('callout.shake');
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
 	},
 	thirdMorph() {
+		// $('#dedede').velocity('callout.shake');
 		$('#dedede').attr('src', 'http://rs477.pbsrc.com/albums/rr134/Kaabiichan/Kirby%20Series/dededeawesomeface.gif~c200');
 	},
 	secondMorph() {
+		// $('#dedede').velocity('callout.shake');
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Tumble_zps558cf398.gif~c200');
 	},
 	gameOver() {
 		clearInterval(this.intervalId);
 		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
 		$('.gameOver').text("GAME OVER, YOUR LIL' GUY IS DEAD");
+		$('#dedede').velocity('transition.fadeOut', 10000);
 	},
 	userDies() {
 		clearInterval(this.intervalId);

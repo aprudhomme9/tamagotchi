@@ -4,6 +4,8 @@
 	<title>Tamagotchi</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.js"></script>
 </head>
 <body>
 	<div class="leftSide">
@@ -20,10 +22,10 @@
 	<div>
 	<div class="rightSide">
 		<div class="properties">
-			<h4 id="hunger">Hunger: </h4>
-			<h4 id="sleepiness">Sleepiness: </h4>
-			<h4 id="boredom">Boredom: </h4>
-			<h4 id="bloodLust">Blood Lust: </h4>
+			<h4 id="hunger">Hunger: 0</h4>
+			<h4 id="sleepiness">Sleepiness: 0</h4>
+			<h4 id="boredom">Boredom: 0</h4>
+			<h4 id="bloodLust">Blood Lust: 0</h4>
 			<h4 id="age">Age: 0</h4>
 		</div>
 	</div>
@@ -34,9 +36,9 @@
 
 	<div class="buttons">
 		<button id="food">FOOD PLZ</button>
-		<button id="lights">IT'S TOO BRIGHT!!</button>
+		<button id="lights">NAP TIME?</button>
 		<button id="play">PLAY WIT ME</button>
-		<button id="bloodThirst">SATISFY MY THIRST FOR BLOOD</button>
+		<button id="bloodThirst">QUENCH BLOOD THIRST</button>
 	</div>
 
 	<div class="sprite">
