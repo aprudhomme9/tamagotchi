@@ -165,6 +165,10 @@ const game = {
 	counter: 0,
 
 	start() {
+		this.timer();
+		$('#food').on('click', game.feedPet);
+		$('#lights').on('click', game.turnLightsOff);
+		$('#play').on('click', game.playWithPet);
 
 	},
 	timer() {
@@ -179,15 +183,18 @@ const game = {
 			if(this.counter > 0 && this.counter % 30 === 0) {
 				monster.age += 1;
 				console.log(monster.age);
-			} else if (this.counter > 0 && this.counter % 5 === 0) {
+			} else if (this.counter > 0 && this.counter % 3 === 0) {
 				monster.hunger += 1;
+				$('#hunger').text('Hunger: ' + monster.hunger);
 
 				monster.sleepiness += 1;
+				$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
 
 				monster.boredom += 1;
+				$('#boredom').text('Boredom: ' + monster.boredom);
 
 				monster.bloodLust += 1;
-
+				$('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
 				// console.log(monster.bloodLust);
 			} 
 		}, 1000);
@@ -199,17 +206,17 @@ const game = {
 
 	},
 	feedPet() {
-		monster.hunger = monster.hunger - 5;
+		monster.hunger -= 5;
 		monster.bloodLust -= 5;
 		console.log('food works');
 	},
 	playWithPet() {
-		monster.boredom = monster.boredom - 5;
+		monster.boredom -= 5;
 		monster.bloodLust -= 5;
 		console.log('play works');
 	},
 	turnLightsOff() {
-		monster.sleepiness = monster.sleepiness - 5;
+		monster.sleepiness -= 5;
 		console.log('lights work');
 	},
 	morph() {
@@ -227,11 +234,9 @@ Click on play, play with pet
 Click on lights, turn em off
 
 ***********************************/
-$('#food').on('click', game.feedPet);
-$('#lights').on('click', game.turnLightsOff);
-$('#play').on('click', game.playWithPet);
 
-game.timer();
+
+game.start();
 
 
 
