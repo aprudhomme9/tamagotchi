@@ -1,4 +1,4 @@
-console.log('running');
+// console.log('running');
 /*****************************************************************************************
 Create a repo for your tomagotchi pet
 make a commit after you finish each one of the following
@@ -137,7 +137,7 @@ class Pet {
 		this.age = age;
 	}
 	isDead() {
-		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 20) {
+		if(this.hunger > 10 || this.sleepiness > 10 || this.boredom > 10 || this.bloodLust > 50) {
 				return true;
 		}
 	} 
@@ -150,15 +150,13 @@ Need to append attributes (Hunger, Boredom, etc) to screen. They already change 
 ********************************************/
 const game = {
 	counter: 0,
-
+	intervalId: null, // initial value
 	start() {
 		/******
 		Need to have game start once user enters input for pet name
 		******/
 		this.timer();
-		$('#food').on('click', game.feedPet);
-		$('#lights').on('click', game.turnLightsOff);
-		$('#play').on('click', game.playWithPet);
+
 
 	},
 	updateValues() {
@@ -170,7 +168,7 @@ const game = {
 	},
 	timer() {
 		// setInterval
-		window.setInterval(() => {
+		this.intervalId = setInterval(() => {
 			this.counter ++;
 			this.updateValues();
 
@@ -180,24 +178,17 @@ const game = {
 
 			if(this.counter > 0 && this.counter % 10 === 0) {
 				monster.age += 1;
-				// $('#age').text('Age: ' + monster.age);
-				// this.updateValues();
-				// console.log(monster.age);
+
 			} else if (this.counter > 0 && this.counter % 2 === 0) {
 				monster.hunger += 1;
-				// this.updateValues();
-				// $('#hunger').text('Hunger: ' + monster.hunger);
 
 				monster.sleepiness += 1;
-				// $('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
 
 				monster.boredom += 1;
-				// $('#boredom').text('Boredom: ' + monster.boredom);
 
 				monster.bloodLust += 1;
-				// $('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
-				// console.log(monster.bloodLust);
-			} 
+
+			};
 		}, 1000);
 	
 			// increase age 
@@ -209,26 +200,24 @@ const game = {
 	feedPet() {
 		monster.hunger -= 5;
 		monster.bloodLust -= 2;
-		// this.updateValues();
-		console.log('food works');
+		// console.log('food works');
 	},
 	playWithPet() {
 		monster.boredom -= 5;
 		monster.bloodLust -= 2;
-		// this.updateValues();
-		console.log('play works');
+		// console.log('play works');
 	},
 	turnLightsOff() {
 		monster.sleepiness -= 5;
-		// this.updateValues();
-		console.log('lights work');
+		monster.bloodLust -= 2;
+		// console.log('lights work');
 	},
 	morph() {
 
 	},
 	gameOver() {
-		console.log('game over')
-		window.clearInterval();
+		clearInterval(this.intervalId);
+		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
 	}
 }
 /***********************************
@@ -254,7 +243,9 @@ game.start();
 
 
 
-
+$('#food').on('click', game.feedPet);
+$('#lights').on('click', game.turnLightsOff);
+$('#play').on('click', game.playWithPet);
 
 
 
