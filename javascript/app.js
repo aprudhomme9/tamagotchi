@@ -201,13 +201,16 @@ const game = {
 	feedPet() {
 		monster.hunger = monster.hunger - 5;
 		monster.bloodLust -= 5;
+		console.log('food works');
 	},
 	playWithPet() {
 		monster.boredom = monster.boredom - 5;
 		monster.bloodLust -= 5;
+		console.log('play works');
 	},
 	turnLightsOff() {
 		monster.sleepiness = monster.sleepiness - 5;
+		console.log('lights work');
 	},
 	morph() {
 
@@ -218,8 +221,15 @@ const game = {
 }
 /***********************************
 Event listeners
-***********************************/
 
+Click on food, feedPet()
+Click on play, play with pet
+Click on lights, turn em off
+
+***********************************/
+$('#food').on('click', game.feedPet);
+$('#lights').on('click', game.turnLightsOff);
+$('#play').on('click', game.playWithPet);
 
 game.timer();
 
