@@ -141,13 +141,21 @@ class Pet {
 		}
 	}
 	nameMonster() {
-		$('#name').text($('input').val());
+		$name.text($('input').val());
 		game.start();	
 	} 
 }
 // create the different phases
 // change name to allow for user input
+const $name = $('#name');
 const monster = new Pet(0, 0, 0, 0, 0);
+const $gameOver = $('.gameOver');
+const $monsterMan = $('#dedede');
+const $age = $('#age');
+const $hunger = $('#hunger');
+const $sleepiness = $('#sleepiness');
+const $boredom = $('#boredom');
+const $bloodLust = $('#bloodLust');
 /*******************************************
 Need to append attributes (Hunger, Boredom, etc) to screen. They already change dynamically with time and game methods
 ********************************************/
@@ -164,11 +172,11 @@ const game = {
 	},
 	updateValues() {
 		// $('#name').text($('input').val());
-		$('#age').text('Age: ' + monster.age);
-		$('#hunger').text('Hunger: ' + monster.hunger);
-		$('#sleepiness').text('Sleepiness: ' + monster.sleepiness);
-		$('#boredom').text('Boredom: ' + monster.boredom);
-		$('#bloodLust').text('Blood Lust: ' + monster.bloodLust);
+		$age.text('Age: ' + monster.age);
+		$hunger.text('Hunger: ' + monster.hunger);
+		$sleepiness.text('Sleepiness: ' + monster.sleepiness);
+		$boredom.text('Boredom: ' + monster.boredom);
+		$bloodLust.text('Blood Lust: ' + monster.bloodLust);
 	},
 	timer() {
 		// setInterval
@@ -219,45 +227,51 @@ const game = {
 	},
 	feedPet() {
 		monster.hunger -= 3;
-		$('#dedede').velocity('callout.pulse', 2000);
+		$monsterMan.velocity('callout.pulse', 2000);
 		// console.log('food works');
 	},
 	playWithPet() {
 		monster.boredom -= 3;
-		$('#dedede').velocity('callout.tada');
+		$monsterMan.velocity('callout.tada');
 		// console.log('play works');
 	},
 	turnLightsOff() {
 		monster.sleepiness -= 3;
-		$('#dedede').velocity('callout.pulse', 3000);
+		$monsterMan.velocity('callout.shake', 2000);
 		// console.log('lights work');
 	},
 	quenchThirst() {
 		monster.bloodLust -= 2;
-		$('#dedede').velocity('callout.bounce');
+		$monsterMan.velocity('callout.flash');
 	},
 	firstMorph() {
 		// $('#dedede').velocity('callout.shake');
-		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
-	},
-	thirdMorph() {
-		// $('#dedede').velocity('callout.shake');
-		$('#dedede').attr('src', 'http://rs477.pbsrc.com/albums/rr134/Kaabiichan/Kirby%20Series/dededeawesomeface.gif~c200');
+		$monsterMan.attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Taunt.gif~c200');
 	},
 	secondMorph() {
 		// $('#dedede').velocity('callout.shake');
-		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Tumble_zps558cf398.gif~c200');
+		$monsterMan.attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Tumble_zps558cf398.gif~c200');
+	},
+	thirdMorph() {
+		// $('#dedede').velocity('callout.shake');
+		$monsterMan.attr('src', 'http://rs477.pbsrc.com/albums/rr134/Kaabiichan/Kirby%20Series/dededeawesomeface.gif~c200');
 	},
 	gameOver() {
 		clearInterval(this.intervalId);
-		$('#dedede').attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
-		$('.gameOver').text("GAME OVER, YOUR LIL' GUY IS DEAD");
-		$('#dedede').velocity('transition.fadeOut', 10000);
+		$monsterMan.attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
+		if(monster.hunger > 10) {
+			$gameOver.text("GAME OVER, YOUR LIL' GUY STARVED TO DEATH");
+		} else if(monster.sleepiness > 10) {
+			$gameOver.text("GAME OVER, YOUR LIL' GUY FELL INTO A COMA FROM SLEEPINESS")
+		} else {
+			$gameOver.text("GAME OVER, YOU NEED TO PLAY WIT YOUR LIL' GUY!")
+		}
+		$monsterMan.velocity('transition.fadeOut', 10000);
 	},
 	userDies() {
 		clearInterval(this.intervalId);
-		$('#dedede').attr('src', 'https://media.giphy.com/media/jlaVt4m9UdyVO/200.gif');
-		$('.gameOver').text("YOUR LIL' GUY HAD TO SATISFY HIS BLOOD LUST. USER DEAD.")
+		$monsterMan.attr('src', 'https://media.giphy.com/media/jlaVt4m9UdyVO/200.gif');
+		$gameOver.text("YOUR LIL' GUY HAD TO SATISFY HIS BLOOD LUST. USER DEAD.")
 	}
 }
 
