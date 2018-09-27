@@ -217,7 +217,7 @@ const game = {
 				monster.bloodLust += 1;
 
 			};
-		}, 500);
+		}, 1000);
 	
 			// increase age 
 			// increase hunger, boredom, sleepiness
