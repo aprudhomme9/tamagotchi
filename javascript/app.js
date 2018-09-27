@@ -226,23 +226,31 @@ const game = {
 
 	},
 	feedPet() {
+ 		if(monster.hunger >= 3) {
 		monster.hunger -= 3;
 		$monsterMan.velocity('callout.pulse', 2000);
 		// console.log('food works');
+		}
 	},
 	playWithPet() {
+		if(monster.boredom >= 3) {
 		monster.boredom -= 3;
 		$monsterMan.velocity('callout.tada');
+		}
 		// console.log('play works');
 	},
 	turnLightsOff() {
+		if(monster.sleepiness >= 3) {
 		monster.sleepiness -= 3;
 		$monsterMan.velocity('callout.shake', 2000);
 		// console.log('lights work');
+		}
 	},
 	quenchThirst() {
+		if(monster.bloodLust >= 2) {
 		monster.bloodLust -= 2;
 		$monsterMan.velocity('callout.flash');
+		}
 	},
 	firstMorph() {
 		// $('#dedede').velocity('callout.shake');
