@@ -217,7 +217,7 @@ const game = {
 				monster.bloodLust += 1;
 
 			};
-		}, 1000);
+		}, 500);
 	
 			// increase age 
 			// increase hunger, boredom, sleepiness
@@ -260,18 +260,18 @@ const game = {
 		clearInterval(this.intervalId);
 		$monsterMan.attr('src', 'http://rs271.pbsrc.com/albums/jj127/Ariand54321/King%20Dedede/Dizzy.gif~c200');
 		if(monster.hunger > 10) {
-			$gameOver.text("GAME OVER, YOUR LIL' GUY STARVED TO DEATH");
+			$gameOver.text("GAME OVER, " + $('input').val() + " starved to death!");
 		} else if(monster.sleepiness > 10) {
-			$gameOver.text("GAME OVER, YOUR LIL' GUY FELL INTO A COMA FROM SLEEPINESS")
+			$gameOver.text("GAME OVER, " + $('input').val() + " fell into a coma!")
 		} else {
-			$gameOver.text("GAME OVER, YOU NEED TO PLAY WIT YOUR LIL' GUY!")
+			$gameOver.text("GAME OVER, you need to play wit " + $('input').val() + "!")
 		}
 		$monsterMan.velocity('transition.fadeOut', 10000);
 	},
 	userDies() {
 		clearInterval(this.intervalId);
 		$monsterMan.attr('src', 'https://media.giphy.com/media/jlaVt4m9UdyVO/200.gif');
-		$gameOver.text("YOUR LIL' GUY HAD TO SATISFY HIS BLOOD LUST. USER DEAD.")
+		$gameOver.text($('input').val() + " had to satisfy its blood lust. USER DEAD.")
 	}
 }
 
