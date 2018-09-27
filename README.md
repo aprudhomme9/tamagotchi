@@ -1,4 +1,4 @@
-<!-- /
+
 My Lil' Guy is a Tamagotchi inspired game in which the main objective is to keep your pet alive.
 
 In My Lil' Guy, the user must also satisfy their pet's blood lust to prevent the pet from killing the user.
@@ -33,4 +33,4 @@ The pet morphs into different stages, shown through varying images of the pet, a
 
 Their is no way to win the game. The objective is simply to grow the pet as long as possible, and ideally through its final stage at age 6.
 
- -->
+
